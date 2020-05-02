@@ -23,4 +23,13 @@ router.get("/", async (req, res, next) => {
     }
 })
 
+router.get("/:id", async (req, res, next) => {
+    try{
+        const results = await db.getDetailedProjectById(req.params.id)
+        res.json(results)
+    }catch(err){
+        next(err)
+    }
+})
+
 module.exports = router
