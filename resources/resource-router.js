@@ -14,4 +14,13 @@ router.post("/", async (req, res, next) => {
     }
 })
 
+router.get("/", async (req, res, next) => {
+    try{
+        const results = await db.getResources()
+        res.json(results)
+    }catch(err){
+        next(err)
+    }
+})
+
 module.exports = router
