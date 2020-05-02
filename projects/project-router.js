@@ -32,4 +32,24 @@ router.get("/:id", async (req, res, next) => {
     }
 })
 
+router.put("/:id", async (req, res, next) => {
+    try{
+        const result = await db.updateProject(req.params.id, req.body)
+        res.status(201).json(result)
+    }catch(err){
+        next(err)
+    }
+})
+
+router.delete("/:id", async (req, res, next) => {
+    try{
+        const result = await db.remove(req.params.id)
+        res.json(result)
+    }catch(err){
+        next(err)
+    }
+})
+
+
+
 module.exports = router

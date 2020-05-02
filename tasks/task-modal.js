@@ -20,8 +20,18 @@ function getTasksById(id){
     return db("task").select("*").where("id", id).first()
 }
 
+function updateTask(id, body){
+    return db("task").where("id", id).update(body)
+}
+
+function remove(id){
+    return db("task").where("id", id).del()
+}
+
 module.exports ={
     addTask,
     getTasks,
     getTasksById,
+    updateTask,
+    remove
 }

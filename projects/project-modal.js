@@ -39,9 +39,19 @@ async function getDetailedProjectById(id){
     return result
 }
 
+function updateProject(id, body){
+    return db("project").where("id", id).update(body)
+}
+
+function remove(id){
+    return db("project").where("id", id).del()
+}
+
 module.exports ={
     addProject,
     getProjects,
     getProjectsById,
     getDetailedProjectById,
+    updateProject,
+    remove,
 }
